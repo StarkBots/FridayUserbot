@@ -110,7 +110,7 @@ async def eval(client, message):
     else:
         evaluation = "Success!"
     final_output = EVAL.format(code=cmd, result=evaluation)
-    if len(cmd) >= 1023:
+    if len(cmd) >= 4096:
         capt = "Eval Result!"
     else:
         capt = cmd
