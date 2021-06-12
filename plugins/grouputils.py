@@ -628,3 +628,20 @@ async def magic_grps(client, message):
         await msg_.edit(f"`Unable To Set Group Photo! TraceBack : {e}")
         return
     await msg_.edit("`Done! Sucessfully Set This Pic As Chat Pic Of This Chat!")
+
+@friday_on_cmd(
+    ["delgpic"],
+    group_only=True,
+    cmd_help={
+      "help:" "To delete the current pic of a group!",
+      "example": "{ch}delgpic"
+    }
+)
+async def delgpic(client, message):
+    kk = await edit_or_reply(message, "`Processing......`")
+    try:
+       await client.delete_chat_photo(message.chat.id)
+    except BaseException as be:
+        await kk.edit(f"**Error:**\n`{be}`")
+        return
+    await kk.edit("Successfully Deleted Group Pic!")
